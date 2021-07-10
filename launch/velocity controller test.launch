@@ -1,0 +1,13 @@
+<launch>
+
+    <include file="$(find omnidirection_car)/launch/velocity controller.launch">
+
+        <arg
+            name="height"
+            value="0.0285"
+        />
+
+    </include>
+    <include file="$(find omnidirection_car)/launch/stand.launch"/>
+
+</launch>

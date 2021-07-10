@@ -1,0 +1,66 @@
+<launch>
+
+	<rosparam
+		file="$(find omnidirection_car)/config/joint_velocity.yaml"
+		command="load"
+	/>
+	<arg
+		name="paused"
+		default="true"
+	/>
+	<arg
+		name="height"
+		default="0"
+	/>
+	<include file="$(find omnidirection_car)/launch/gazebo controller.launch">
+
+		<arg
+			name="paused"
+			value="$(arg paused)"
+		/>
+		<arg
+			name="height"
+			value="$(arg height)"
+		/>
+
+	</include>
+	<node
+		name="controller_spawner"
+		pkg="controller_manager"
+		type="spawner"
+		respawn="false"
+		output="screen"
+		args="joint_state_controller left_joint_velocity_controller back_joint_velocity_controller right_joint_velocity_controller"
+		ns="/omnidirection_car"
+	/>
+	<node
+		name="odometry"
+		pkg="omnidirection_car"
+		type="omnidirection_car_odometry"
+		ns="omnidirection_car"
+		output="screen"
+		args="pose_cheat"
+	></node><!-- args="pose_cheat" -->
+	<node
+		name="kinematics"
+		pkg="omnidirection_car"
+		type="omnidirection_car_kinematics"
+		ns="omnidirection_car"
+		output="screen"
+	></node>
+	<node
+		name="encoder"
+		pkg="omnidirection_car"
+		type="omnidirection_car_sensor_encoder"
+		ns="omnidirection_car/sensor"
+		output="screen"
+	></node>
+	<node
+		name="main"
+		pkg="omnidirection_car"
+		type="omnidirection_car_main"
+		ns="omnidirection_car"
+		output="screen"
+	></node>
+
+</launch>

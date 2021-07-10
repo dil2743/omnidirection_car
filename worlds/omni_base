@@ -1,0 +1,3962 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='robot_mobile_wheel_3_omni_omnidirection_car'>
+      <link name='body_link'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <mass>0.0786294</mass>
+          <inertia>
+            <ixx>2.03599e-05</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.03599e-05</iyy>
+            <iyz>0</iyz>
+            <izz>3.94596e-05</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <gravity>1</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <visual name='visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>/home/meditab/.gazebo/abstract/body.stl</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.01 0.01 0.01 1</specular>
+            <emissive>0 0 0 1</emissive>
+            <shader type='vertex'>
+              <normal_map>__default__</normal_map>
+            </shader>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>/home/meditab/.gazebo/abstract/body.stl</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+        <enable_wind>0</enable_wind>
+      </link>
+      <model name='omni_wheel_left_model'>
+        <link name='omni_wheel_rim_link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertial>
+            <mass>0.00835758</mass>
+            <inertia>
+              <ixx>9.40333e-07</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>6.63684e-07</iyy>
+              <iyz>0</iyz>
+              <izz>6.63684e-07</izz>
+            </inertia>
+            <pose>0 -0.000343 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/rim.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.3 0 0 1</ambient>
+              <diffuse>0.7 0 0 1</diffuse>
+              <specular>0.01 0 0 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/rim.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_e_link'>
+          <pose>-0.0055 0.01355 0 0 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_ne_link'>
+          <pose>0.0055 0.009581 0.009581 0.875398 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_n_link'>
+          <pose>-0.0055 0 0.01355 1.5708 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_nw_link'>
+          <pose>0.0055 -0.009581 0.009581 2.35619 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_w_link'>
+          <pose>-0.0055 -0.01355 0 -3.14159 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_sw_link'>
+          <pose>0.0055 -0.009581 -0.009581 -2.35619 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_s_link'>
+          <pose>-0.0055 0 -0.01355 -1.5708 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_se_link'>
+          <pose>0.0055 0.009581 -0.009581 -0.875398 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <joint name='omni_wheel_s_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_s_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_se_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_se_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_e_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_e_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_ne_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_ne_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_n_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_n_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_nw_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_nw_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_w_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_w_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_sw_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_sw_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>-0.034641 0.02 0 0 -0 2.61799</pose>
+      </model>
+      <model name='omni_wheel_back_model'>
+        <link name='omni_wheel_rim_link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertial>
+            <mass>0.00835758</mass>
+            <inertia>
+              <ixx>9.40333e-07</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>6.63684e-07</iyy>
+              <iyz>0</iyz>
+              <izz>6.63684e-07</izz>
+            </inertia>
+            <pose>0 -0.000343 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/rim.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0 0.3 0 1</ambient>
+              <diffuse>0 0.7 0 1</diffuse>
+              <specular>0 0.01 0 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/rim.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_e_link'>
+          <pose>-0.0055 0.01355 0 0 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_ne_link'>
+          <pose>0.0055 0.009581 0.009581 0.875398 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_n_link'>
+          <pose>-0.0055 0 0.01355 1.5708 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_nw_link'>
+          <pose>0.0055 -0.009581 0.009581 2.35619 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_w_link'>
+          <pose>-0.0055 -0.01355 0 -3.14159 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_sw_link'>
+          <pose>0.0055 -0.009581 -0.009581 -2.35619 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_s_link'>
+          <pose>-0.0055 0 -0.01355 -1.5708 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_se_link'>
+          <pose>0.0055 0.009581 -0.009581 -0.875398 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <joint name='omni_wheel_s_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_s_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_se_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_se_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_e_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_e_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_ne_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_ne_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_n_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_n_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_nw_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_nw_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_w_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_w_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_sw_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_sw_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>0 -0.04 0 0 -0 -1.5708</pose>
+      </model>
+      <model name='omni_wheel_right_model'>
+        <link name='omni_wheel_rim_link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertial>
+            <mass>0.00835758</mass>
+            <inertia>
+              <ixx>9.40333e-07</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>6.63684e-07</iyy>
+              <iyz>0</iyz>
+              <izz>6.63684e-07</izz>
+            </inertia>
+            <pose>0 -0.000343 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/rim.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0 0 0.3 1</ambient>
+              <diffuse>0 0 0.7 1</diffuse>
+              <specular>0 0 0.01 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/rim.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_e_link'>
+          <pose>-0.0055 0.01355 0 0 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_ne_link'>
+          <pose>0.0055 0.009581 0.009581 0.875398 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_n_link'>
+          <pose>-0.0055 0 0.01355 1.5708 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_nw_link'>
+          <pose>0.0055 -0.009581 0.009581 2.35619 -0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_w_link'>
+          <pose>-0.0055 -0.01355 0 -3.14159 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_sw_link'>
+          <pose>0.0055 -0.009581 -0.009581 -2.35619 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_s_link'>
+          <pose>-0.0055 0 -0.01355 -1.5708 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <link name='omni_wheel_roller_se_link'>
+          <pose>0.0055 0.009581 -0.009581 -0.875398 0 0</pose>
+          <inertial>
+            <mass>0.00113845</mass>
+            <inertia>
+              <ixx>2.53776e-08</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>2.53776e-08</iyy>
+              <iyz>0</iyz>
+              <izz>1.47666e-08</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <ambient>0.03 0.03 0.03 1</ambient>
+              <diffuse>0.07 0.07 0.07 1</diffuse>
+              <specular>0.001 0.001 0.001 1</specular>
+              <emissive>0 0 0 1</emissive>
+              <shader type='vertex'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/meditab/.gazebo/omni_wheel/roller.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <enable_wind>0</enable_wind>
+        </link>
+        <joint name='omni_wheel_s_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_s_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_se_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_se_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_e_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_e_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_ne_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_ne_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_n_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_n_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_nw_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_nw_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_w_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_w_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <joint name='omni_wheel_sw_joint' type='revolute'>
+          <parent>omni_wheel_rim_link</parent>
+          <child>omni_wheel_roller_sw_link</child>
+          <pose>0 0 0 0 -0 1.5708</pose>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-1.79769e+308</lower>
+              <upper>1.79769e+308</upper>
+              <effort>-1</effort>
+              <velocity>-1</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0</damping>
+              <friction>0</friction>
+            </dynamics>
+          </axis>
+          <physics>
+            <ode>
+              <limit>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </limit>
+              <suspension>
+                <cfm>0</cfm>
+                <erp>0.2</erp>
+              </suspension>
+            </ode>
+          </physics>
+        </joint>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>0.034641 0.02 0 0 -0 0.523599</pose>
+      </model>
+      <joint name='left_joint' type='revolute'>
+        <parent>body_link</parent>
+        <child>omni_wheel_left_model::omni_wheel_rim_link</child>
+        <pose>0 0 0 3.14159 -1.57079 3.14159</pose>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.79769e+308</lower>
+            <upper>1.79769e+308</upper>
+            <effort>-1</effort>
+            <velocity>-1</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+          </dynamics>
+        </axis>
+        <physics>
+          <ode>
+            <limit>
+              <cfm>0</cfm>
+              <erp>0.2</erp>
+            </limit>
+            <suspension>
+              <cfm>0</cfm>
+              <erp>0.2</erp>
+            </suspension>
+          </ode>
+        </physics>
+      </joint>
+      <joint name='back_joint' type='revolute'>
+        <parent>body_link</parent>
+        <child>omni_wheel_back_model::omni_wheel_rim_link</child>
+        <pose>0 0 0 3.14159 -1.57079 3.14159</pose>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.79769e+308</lower>
+            <upper>1.79769e+308</upper>
+            <effort>-1</effort>
+            <velocity>-1</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+          </dynamics>
+        </axis>
+        <physics>
+          <ode>
+            <limit>
+              <cfm>0</cfm>
+              <erp>0.2</erp>
+            </limit>
+            <suspension>
+              <cfm>0</cfm>
+              <erp>0.2</erp>
+            </suspension>
+          </ode>
+        </physics>
+      </joint>
+      <joint name='right_joint' type='revolute'>
+        <parent>body_link</parent>
+        <child>omni_wheel_right_model::omni_wheel_rim_link</child>
+        <pose>0 0 0 3.14159 -1.57079 3.14159</pose>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.79769e+308</lower>
+            <upper>1.79769e+308</upper>
+            <effort>-1</effort>
+            <velocity>-1</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+          </dynamics>
+        </axis>
+        <physics>
+          <ode>
+            <limit>
+              <cfm>0</cfm>
+              <erp>0.2</erp>
+            </limit>
+            <suspension>
+              <cfm>0</cfm>
+              <erp>0.2</erp>
+            </suspension>
+          </ode>
+        </physics>
+      </joint>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <plugin name='omni_plugin' filename='/home/guir/gazebo/robot/mobile/wheel/3/omni/omnidirection_car/plugin/main/build/libmain.so'/>
+      <pose>0.786155 -1.74949 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>139 179000000</sim_time>
+      <real_time>11 632078414</real_time>
+      <wall_time>1625896434 182668806</wall_time>
+      <iterations>4766</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='robot_mobile_wheel_3_omni_omnidirection_car'>
+        <pose>-0.011785 -0.003672 0.018818 -3e-05 -8e-05 -1.06785</pose>
+        <scale>1 1 1</scale>
+        <link name='body_link'>
+          <pose>-0.011785 -0.003672 0.018818 -3e-05 -8e-05 -1.06785</pose>
+          <velocity>0.000361 0.003042 0.00123 -0.300472 0.009707 -0.022883</velocity>
+          <acceleration>0.149073 0.100577 3.51265 -0.774902 -0.198586 1.27897</acceleration>
+          <wrench>0.011722 0.007908 0.276197 0 -0 0</wrench>
+        </link>
+        <model name='omni_wheel_back_model'>
+          <pose>-0.016491 -0.059356 5.6e-05 0.000147 -8e-05 -1.57073</pose>
+          <scale>1 1 1</scale>
+          <link name='omni_wheel_rim_link'>
+            <pose>-0.046832 -0.022952 0.018819 -2.578 -0.000166 -2.63861</pose>
+            <velocity>-0.00047 0.004239 0.007432 0.072497 0.286993 0.02183</velocity>
+            <acceleration>-0.097352 0.434028 15.9602 -1.85442 -0.311688 -2.29588</acceleration>
+            <wrench>-0.000814 0.003627 0.133389 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_e_link'>
+            <pose>-0.047536 -0.010265 0.01158 -2.61719 -0.216833 -2.28282</pose>
+            <velocity>-0.002858 0.004828 0.008932 0.207761 0.100873 -0.37168</velocity>
+            <acceleration>-4.0751 0.546409 16.8636 -1.34919 0.833946 0.312581</acceleration>
+            <wrench>-0.004639 0.000622 0.019198 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_n_link'>
+            <pose>-0.038523 -0.026645 0.00736 0.644565 0.83713 -0.276616</pose>
+            <velocity>-0.00225 0.004128 0.002588 -0.54873 -0.1696 -0.159087</velocity>
+            <acceleration>-3.5006 -0.143339 9.53176 2.43886 0.194997 -2.54678</acceleration>
+            <wrench>-0.003985 -0.000163 0.010851 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_ne_link'>
+            <pose>-0.053085 -0.022996 0.005611 -1.87486 -1.12444 -2.36259</pose>
+            <velocity>-0.002254 0.00341 0.011541 -0.584818 -0.344111 0.084779</velocity>
+            <acceleration>-3.308 -1.8757 22.5924 -1.99147 -0.322926 -2.8277</acceleration>
+            <wrench>-0.003766 -0.002135 0.02572 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_nw_link'>
+            <pose>-0.04528 -0.037184 0.015839 -0.003994 -0.221718 2.09191</pose>
+            <velocity>-0.001121 0.004029 0.006343 -0.037086 0.355795 -0.869551</velocity>
+            <acceleration>-0.967936 0.123544 15.295 -1.25422 0.131457 2.66061</acceleration>
+            <wrench>-0.001102 0.000141 0.017413 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_s_link'>
+            <pose>-0.045501 -0.013957 0.030273 2.13923 0.123361 -2.56007</pose>
+            <velocity>0.002733 0.003305 0.007769 -0.192223 0.786749 -0.334796</velocity>
+            <acceleration>4.60017 0.255736 15.5885 2.79491 1.56069 0.481428</acceleration>
+            <wrench>0.005237 0.000291 0.017747 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_se_link'>
+            <pose>-0.058022 -0.014022 0.021802 2.94416 -0.24295 2.76797</pose>
+            <velocity>0.000354 0.003766 0.011686 -0.000662 0.45919 -0.541728</velocity>
+            <acceleration>0.871789 -0.152052 21.514 1.00913 0.553362 2.20222</acceleration>
+            <wrench>0.000992 -0.000173 0.024493 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_sw_link'>
+            <pose>-0.050214 -0.028214 0.032037 0.643588 1.29226 2.73625</pose>
+            <velocity>0.002452 0.002982 0.007591 0.580524 -0.717067 -0.282239</velocity>
+            <acceleration>4.71452 -0.167158 16.8125 2.51531 -0.298715 -0.31227</acceleration>
+            <wrench>0.005367 -0.00019 0.01914 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_w_link'>
+            <pose>-0.036492 -0.030337 0.026058 -0.480875 0.306343 1.02701</pose>
+            <velocity>0.001101 0.002933 0.004842 -0.189881 0.659201 0.80039</velocity>
+            <acceleration>2.55367 -0.219673 12.202 -0.136087 -1.37975 -2.47751</acceleration>
+            <wrench>0.002907 -0.00025 0.013891 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='omni_wheel_left_model'>
+          <pose>-0.051136 0.000642 4.6e-05 -4e-06 0.000168 2.61806</pose>
+          <scale>1 1 1</scale>
+          <link name='omni_wheel_rim_link'>
+            <pose>-0.010959 0.03632 0.018815 -2.58247 5.4e-05 1.55013</pose>
+            <velocity>0.001246 0.002999 -0.010808 -0.301981 0.092329 -0.021464</velocity>
+            <acceleration>0.068448 0.184902 -19.4544 0.582667 -1.35619 2.65121</acceleration>
+            <wrench>0.000572 0.001545 -0.162592 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_e_link'>
+            <pose>0.000411 0.030583 0.011627 -2.99041 -0.540406 2.83313</pose>
+            <velocity>0.000482 0.000607 -0.010165 -0.3559 0.095599 -0.104975</velocity>
+            <acceleration>-0.036418 -3.97273 -16.4417 -2.92561 -0.60847 0.583378</acceleration>
+            <wrench>-4.1e-05 -0.004523 -0.018718 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_n_link'>
+            <pose>-0.018259 0.030968 0.007328 0.903936 -0.54008 -1.20697</pose>
+            <velocity>9.5e-05 -0.000188 -0.008391 -1.54471 0.108242 0.776401</velocity>
+            <acceleration>-0.185731 -6.33685 -16.3807 1.78274 -0.921232 0.322087</acceleration>
+            <wrench>-0.000211 -0.007214 -0.018649 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_ne_link'>
+            <pose>-0.007807 0.041755 0.005611 1.74659 0.683188 -1.4798</pose>
+            <velocity>0.000244 -0.000985 -0.013148 -1.22628 0.059257 -0.144695</velocity>
+            <acceleration>-0.201421 -7.40317 -23.0429 -2.49143 0.836312 -2.5253</acceleration>
+            <wrench>-0.000229 -0.008428 -0.026233 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_nw_link'>
+            <pose>-0.024047 0.042091 0.015774 -0.19691 0.112205 2.06123</pose>
+            <velocity>0.00115 0.00239 -0.0113 -0.284803 0.091436 -0.066374</velocity>
+            <acceleration>0.053759 -1.69182 -22.4846 -2.58269 -0.830611 0.699704</acceleration>
+            <wrench>6.1e-05 -0.001926 -0.025598 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_s_link'>
+            <pose>-0.003887 0.030673 0.030301 -2.42648 0.791816 -2.27797</pose>
+            <velocity>0.002208 0.006324 -0.009762 1.84637 0.048296 -1.36614</velocity>
+            <acceleration>0.30925 6.67826 -16.3674 -2.70621 -0.840096 1.53781</acceleration>
+            <wrench>0.000352 0.007603 -0.018633 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_se_link'>
+            <pose>0.002356 0.041546 0.021854 -3.11676 -0.31533 -0.100747</pose>
+            <velocity>0.001662 0.003661 -0.013649 0.020555 0.087041 -1.00808</velocity>
+            <acceleration>0.127087 1.89259 -22.7339 2.81815 -0.364276 -2.27722</acceleration>
+            <wrench>0.000145 0.002155 -0.025881 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_sw_link'>
+            <pose>-0.013885 0.041883 0.032018 0.772206 -1.25227 2.32293</pose>
+            <velocity>0.002654 0.007037 -0.012187 -0.807869 0.101256 -0.140781</velocity>
+            <acceleration>0.356157 7.68563 -22.5815 0.360058 -0.811569 2.59796</acceleration>
+            <wrench>0.000405 0.00875 -0.025708 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_w_link'>
+            <pose>-0.022557 0.031059 0.026002 -0.317596 -0.468284 -2.53267</pose>
+            <velocity>0.001839 0.005417 -0.008192 0.417302 0.075751 1.11773</velocity>
+            <acceleration>0.253712 4.18663 -16.2381 -0.349338 1.52852 -0.011525</acceleration>
+            <wrench>0.000289 0.004766 -0.018486 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='omni_wheel_right_model'>
+          <pose>0.018146 0.000646 5.6e-05 -0.000143 -8.7e-05 0.523664</pose>
+          <scale>1 1 1</scale>
+          <link name='omni_wheel_rim_link'>
+            <pose>0.022435 -0.024383 0.018821 -2.58041 -0.000139 -0.544264</pose>
+            <velocity>-4.3e-05 0.002284 0.007247 -0.171823 -0.077394 -0.020639</velocity>
+            <acceleration>0.188638 0.194231 14.3344 1.60105 0.901252 -2.84547</acceleration>
+            <wrench>0.001577 0.001623 0.119801 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_e_link'>
+            <pose>0.011791 -0.03135 0.011609 2.58349 0.062036 2.69609</pose>
+            <velocity>0.000355 0.001262 0.007662 -0.099595 0.044311 -0.246732</velocity>
+            <acceleration>2.03696 -0.916247 12.7533 -2.4302 1.00655 -0.258859</acceleration>
+            <wrench>0.002319 -0.001043 0.014519 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_n_link'>
+            <pose>0.021464 -0.015366 0.007346 0.931367 -0.468464 2.92127</pose>
+            <velocity>0.000883 0.000419 0.005557 -0.012263 0.197035 0.154067</velocity>
+            <acceleration>2.73619 -1.25422 12.2363 0.8267 0.17049 1.19789</acceleration>
+            <wrench>0.003115 -0.001428 0.01393 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_ne_link'>
+            <pose>0.025581 -0.029808 0.005617 -1.72641 -0.535974 -0.464325</pose>
+            <velocity>0.000665 -3.5e-05 0.009366 0.016203 0.133707 -0.055848</velocity>
+            <acceleration>3.2078 -1.49361 18.0963 -0.902277 -0.879118 -0.47155</acceleration>
+            <wrench>0.003652 -0.0017 0.020602 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_nw_link'>
+            <pose>0.033981 -0.015929 0.015808 0.215867 -0.061095 2.8691</pose>
+            <velocity>0.000354 0.001545 0.006514 0.061779 0.307369 1.9089</velocity>
+            <acceleration>0.903652 -0.187052 15.5953 -0.352894 0.988296 0.874508</acceleration>
+            <wrench>0.001029 -0.000213 0.017754 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_s_link'>
+            <pose>0.013995 -0.027703 0.030292 2.32645 0.682432 -0.008004</pose>
+            <velocity>-0.000995 0.004441 0.007182 0.516382 1.06024 0.815502</velocity>
+            <acceleration>-2.60606 1.81429 12.7352 2.33391 -1.44236 2.953</acceleration>
+            <wrench>-0.002967 0.002065 0.014498 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_se_link'>
+            <pose>0.0203 -0.038532 0.021834 2.99963 -0.281264 -1.63914</pose>
+            <velocity>-0.000571 0.002836 0.009427 -0.440342 -0.524904 -1.63278</velocity>
+            <acceleration>-0.48381 0.579148 15.6985 1.68139 -0.697314 1.02316</acceleration>
+            <wrench>-0.000551 0.000659 0.017872 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_sw_link'>
+            <pose>0.0287 -0.024653 0.032031 -1.21185 0.885506 2.88003</pose>
+            <velocity>-0.000985 0.004339 0.007624 0.395818 0.856694 -0.268303</velocity>
+            <acceleration>-2.7746 1.85081 15.5536 0.273327 0.217263 0.788602</acceleration>
+            <wrench>-0.003159 0.002107 0.017707 0 -0 0</wrench>
+          </link>
+          <link name='omni_wheel_roller_w_link'>
+            <pose>0.02367 -0.011721 0.026031 -0.544406 0.143669 2.82946</pose>
+            <velocity>-0.000272 0.003447 0.005118 -0.095937 0.04539 -0.235895</velocity>
+            <acceleration>-1.42465 1.06896 12.759 -2.05293 -0.472771 1.31917</acceleration>
+            <wrench>-0.001622 0.001217 0.014526 0 -0 0</wrench>
+          </link>
+        </model>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-0.362796 0.862476 0.537617 0 0.493797 -1.01499</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
