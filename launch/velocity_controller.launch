@@ -12,7 +12,7 @@
 		name="height"
 		default="0"
 	/>
-	<include file="$(find omnidirection_car)/launch/gazebo controller.launch">
+	<include file="$(find omnidirection_car)/launch/gazebo_controller.launch">
 
 		<arg
 			name="paused"

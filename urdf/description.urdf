@@ -1516,30 +1516,31 @@
 	<transmission name="left_transmission">
 
 		<type>transmission_interface/SimpleTransmission</type>
+		
 		<joint name="left_rim_joint">
-
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 		</joint>
+
 		<actuator name="left_motor">
 
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 			<mechanicalReduction>1</mechanicalReduction>
 
 		</actuator>
 
 	</transmission>
+
 	<transmission name="back_transmission">
 
 		<type>transmission_interface/SimpleTransmission</type>
 		<joint name="back_rim_joint">
 
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 
 		</joint>
 		<actuator name="back_motor">
 
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 			<mechanicalReduction>1</mechanicalReduction>
 
 		</actuator>
@@ -1550,12 +1551,12 @@
 		<type>transmission_interface/SimpleTransmission</type>
 		<joint name="right_rim_joint">
 
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 
 		</joint>
 		<actuator name="rim_motor">
 
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 			<mechanicalReduction>1</mechanicalReduction>
 
 		</actuator>

@@ -79,7 +79,7 @@
 	/>
 	<gazebo>
 
-		<plugin name="gazebo_ros_control" filename="libomnidirection_car.so">
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
 
 			<robotNamespace>/omnidirection_car</robotNamespace>
 

@@ -3955,7 +3955,7 @@
       </joint>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <plugin name='omni_plugin' filename='/home/meditab/catkin_ws/devel/lib/libomnidirection_car.so'/>
+      <plugin name='omni_plugin' filename='/home/meditab/catkin_ws/devel/lib/libmy_plugin.so'/>
       <pose>-0.001026 0.00364 0 0 -0 0</pose>
     </model>
   </world>

@@ -1,9 +1,9 @@
 <launch>
 
-	<!--param
+	<param
 		name="robot_description"
 		textfile="$(find omnidirection_car)/urdf/description.urdf"
-	/-->
+	/>
 	<param
 		name="omnidirection_car/robot_description"
 		command="$(find xacro)/xacro '$(find omnidirection_car)/xacro/main.urdf.xacro'"
